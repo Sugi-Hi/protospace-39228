@@ -1,0 +1,69 @@
+<main class="main">
+  <div class="inner">
+    <div class="prototype__wrapper">
+      <p class="prototype__hedding">
+        <%= @prototype.title %>
+      </p>
+      <%= link_to "by 投稿者#{@prototype.user.name}", user_path(current_user), class: :prototype__user %>
+      
+      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+        <% if current_user == @prototype.user %> 
+          <div class="prototype__manage">
+           <%= link_to "編集する", edit_prototype_path(@prototype), class: :prototype__btn %>
+           <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: :prototype__btn %>
+          </div>
+        <% else %>
+          <div class="prototype__manage">
+          <%= link_to "編集する", root_path, class: :prototype__btn %>
+          </div>
+        <% end %>
+      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+
+      <div class="prototype__image">
+        <%= image_tag @prototype.image %>
+      </div>
+      <div class="prototype__body">
+        <div class="prototype__detail">
+          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__message">
+            <%= @prototype.catch_copy %>
+          </p>
+        </div>
+        <div class="prototype__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message">
+            <%= @prototype.concept %>
+          </p>
+        </div>
+      </div>
+      <div class="prototype__comments">
+        <%# <% ログインしているとき以下のフォームを表示する %>
+        <% if user_signed_in? %>
+          <%# <%= form_with model: モデル名,local: true do |f|%>
+          <%= form_with model: [@prototype, @comment], local: true do |f| %>
+            <div class="field">
+              <%= f.label :content, "コメント" %><br />
+              <%= f.text_field :content, id:"comment_content" %>
+            </div>
+            <div class="actions">
+              <%= f.submit "送信する", class: :form__btn  %>
+            </div>
+          <% end %>
+          <%# // ログインしているユーザーには上記を表示する %>
+        <% else %>
+          <strong>** コメント投稿にはユーザーの新規登録・ログインが必要です **</strong>
+        <% end %>
+        <ul class="comments_lists">
+          <%# 投稿に紐づくコメントを一覧する処理を記述する  %>
+            <% @comments.each do |comment| %>
+              <li class="comments_list">
+                <%= comment.content %> 
+                <%= link_to "（#{comment.user.name}）", user_path(comment.user), class: :comment_user %>
+              </li>
+            <% end %>
+          <%# /投稿に紐づくコメントを一覧する処理を記述する %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
