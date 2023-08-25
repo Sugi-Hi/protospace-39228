@@ -8,11 +8,11 @@
         <%# "#{params[:name]}ユーザーさん", root_path ,  %>
       </div>
     <%# // ログインしているときは上記を表示する %>
-    <div class="card__wrapper">
-      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
-        <%= render partial: "prototype" ,collection: @prototypes %>
-    </div>
     <% else %>
     <% end %>
+    <div class="card__wrapper">
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <%= render partial: "prototype" ,collection: @prototypes %>
+    </div>
   </div>
 </main>
