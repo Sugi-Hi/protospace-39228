@@ -4,7 +4,7 @@
       <p class="prototype__hedding">
         <%= @prototype.title %>
       </p>
-      <%= link_to "by 投稿者#{@prototype.user.name}", user_path(current_user), class: :prototype__user %>
+      <%= link_to "by 投稿者#{@prototype.user.name}", user_path(@prototype.user), class: :prototype__user %>
       
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
         <% if current_user == @prototype.user %> 
