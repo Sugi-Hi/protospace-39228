@@ -3,7 +3,12 @@
     <div class="form__wrapper">
       <h2 class="page-heading">プロトタイプ編集</h2>
       <%# 部分テンプレートでフォームを表示する %>
-      <%= render partial: "form", locals: { prototype: @prototype} %>
+      <% if current_user == @prototype.user %>
+        <%= render partial: "form", locals: { prototype: @prototype} %>
+      <% else %>
+       <%# フォーム表示でも投稿者のみが編集できる %>
+        <%# <%= redirect_to root_path %>
+      <% end %> 
     </div>
   </div>
 </div>
