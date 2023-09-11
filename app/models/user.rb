@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :position , presence: true
 
   validates :email , presence: true
-  validates :encrypted_password , presence: true
+  validates :encrypted_password , presence: true , length: { minimum: 6 }
   # user⇒複数prototypes・comments
   has_many :prototypes
   has_many :comments
