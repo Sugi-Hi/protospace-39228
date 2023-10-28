@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+# 旧PCバージョン⇒  ruby '2.6.5'
+# 新バージョン
+ruby '2.7.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0'
+gem "rails", "~> 6.0.0"
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
@@ -58,6 +60,8 @@ gem 'devise'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
-group :production do
-  gem 'pg'
-end
+# group :production do
+#   gem 'pg'
+# end
+
+
