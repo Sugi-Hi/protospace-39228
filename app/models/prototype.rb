@@ -6,7 +6,8 @@ class Prototype < ApplicationRecord
     validates :image      , presence: true
 
     # prototypes⇒単一user・複数comments
+    # 画像カラム化：image
     belongs_to  :user
     has_many    :comments ,dependent: :destroy
-    has_one_attached :image
+    has_one_attached  :image
 end
