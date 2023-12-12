@@ -1,5 +1,5 @@
 class Prototype < ApplicationRecord
-    # 値化
+    # 入力パラメータ表示化
     validates :title      , presence: true
     validates :catch_copy , presence: true
     validates :concept    , presence: true
